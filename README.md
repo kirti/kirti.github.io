@@ -16,7 +16,7 @@ Currently, I am **starting my journey in building AI agents** and exploring exci
 *"Kind is Cool | Share your knowledge"*
 
 **Personal & Spiritual Journey:**  
-I follow a personal spiritual path through **Krishna, Maha Dev**, and practice **Art of Living**.
+I follow a personal spiritual path through **Shree Radhe Radhe Krishna, Har Har Maha Dev**, and practice **Art of Living**.
 I also mentor and coach people free of cost—if you want to connect, reach out at: [kirtikau30@gmail.com](mailto:kirtkau30@gmail.com). 
 Every year, I strive to help others learn and grow together.  
 
