@@ -8,7 +8,7 @@
 
 ## About Me
 
-Hello! I’m **Kirti Kaushal**, a passionate learner and explorer in **AI & Machine Learning**, with over **14 years of experience in software development**. I have held roles as **Technical Lead, Software Developer, and Team Lead**, and I enjoy building web applications that delight users while solving real-world problems.
+Hello! I’m **Kirti Kaushal**, a passionate learner and explorer in **AI & Machine Learning**, with over **14 years of experience in software development**. I have held roles as **Technical Artictech , Technical Lead, Software Developer, and Team Lead**, and I enjoy building web applications that delight users while solving real-world problems.
 
 Currently, I am **starting my journey in building AI agents** and exploring exciting projects to grow my skills after completing **PGP-AIML**. My mission is not just personal growth, but also **sharing knowledge, helping others, and inspiring the learning community**.  
 
