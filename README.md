@@ -1,4 +1,4 @@
-# Kirti Kaushal | AI & ML Portfolio
+# Kirti Kaushal | Full Stack Developer | AI & ML Portfolio
 
 [![GitHub followers](https://img.shields.io/github/followers/kirti?style=social)](https://github.com/kirti)  
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Kirti-blue?style=flat&logo=linkedin)](https://linkedin.com/in/kirti3)  
