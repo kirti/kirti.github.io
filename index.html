@@ -147,33 +147,27 @@
     </div>
   </div>
 </section>
+   <!-- Floating Chat Button -->
+  <div id="chat-button" onclick="toggleChat()">
+    💬
+  </div>
+
+  <!-- Chat Popup -->
+  <div id="chat-popup" class="chat-popup hidden">
+    <div class="chat-header" onclick="toggleChat()">
+      Your Friend  <span id="toggle-symbol">▼</span>
+    </div>
+    <div class="chat-body" id="chat-body"></div>
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Ask anything..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
 
 <footer>
   © 2026 Kirti | Portfolio powered by GitHub Pages
 </footer>
+<script src="script.js"></script>
 
-<script>
-  // Fetch Medium Articles via RSS2JSON
-  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@kirtikau")
-  .then(response => response.json())
-  .then(data => {
-    const container = document.getElementById("articles-learning");
-    container.innerHTML = "";
-    data.items.slice(0,5).forEach(post => {
-      const article = document.createElement("div");
-      article.classList.add("article-card");
-      article.innerHTML = `
-        <h3>${post.title}</h3>
-        <p>${new Date(post.pubDate).toLocaleDateString()}</p>
-        <a href="${post.link}" target="_blank">Read on Medium</a>
-      `;
-      container.appendChild(article);
-    });
-  })
-  .catch(err => {
-    document.getElementById("articles").innerHTML = "<p>Failed to load articles.</p>";
-    console.log(err);
-  });
-</script>
 </body>
 </html>
