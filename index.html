@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kirti Kaushal | Senior Full Stack . AI/ML Engineer · 15 Years</title>
+  <meta name="description" content="Senior AI/ML Engineer · Full Stack Developer · 15 Years · Building AI tools, npm packages, and open source projects. New Jersey, USA.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --cream:#FDF6EC;--warm:#FFF9F0;--latte:#E8D5B7;--caramel:#C4956A;
+      --cinnamon:#A0522D;--espresso:#3E2723;--honey:#E8A849;
+      --warm-gray:#8B7D6B;--rose:#C97B84;--sage:#A8B5A0;
+      --sage-light:#D4DDD0;--soft-shadow:rgba(62,39,35,0.08);
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Nunito',sans-serif;color:var(--espresso);line-height:1.8;overflow-x:hidden;}
+
+    .bg-fixed{position:fixed;inset:0;z-index:-2;background:url('cozy-bg.png') center/cover no-repeat fixed;}
+    .bg-fixed::after{content:'';position:absolute;inset:0;background:rgba(253,246,236,0.82);backdrop-filter:blur(2px);}
+    .fireflies{position:fixed;inset:0;z-index:-1;pointer-events:none;}
+    .firefly{position:absolute;width:6px;height:6px;background:var(--honey);border-radius:50%;filter:blur(2px);opacity:0;animation:glow-float 8s ease-in-out infinite;}
+    .firefly:nth-child(1){left:10%;top:20%;animation-delay:0s;}
+    .firefly:nth-child(2){left:70%;top:30%;animation-delay:2s;animation-duration:9s;}
+    .firefly:nth-child(3){left:40%;top:60%;animation-delay:4s;animation-duration:6s;}
+    .firefly:nth-child(4){left:85%;top:15%;animation-delay:1s;animation-duration:10s;}
+    @keyframes glow-float{0%,100%{opacity:0;transform:translateY(0) scale(0.5);}50%{opacity:0.85;transform:translateY(-40px) scale(1);}}
+
+    /* NAV */
+    nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(24px);background:rgba(253,246,236,0.88);border-bottom:1px solid rgba(196,149,106,0.15);padding:10px 0;}
+    .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+    nav .container{display:flex;justify-content:space-between;align-items:center;}
+    .nav-logo{font-family:'Lora',serif;font-size:1.1rem;font-weight:600;color:var(--cinnamon);text-decoration:none;}
+    .nav-logo span{color:var(--honey);}
+    .nav-links{display:flex;gap:24px;list-style:none;}
+    .nav-links a{text-decoration:none;color:var(--warm-gray);font-size:0.82rem;font-weight:500;letter-spacing:0.04em;transition:color .3s;position:relative;}
+    .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--caramel);border-radius:1px;transition:width .3s;}
+    .nav-links a:hover{color:var(--cinnamon);}
+    .nav-links a:hover::after{width:100%;}
+    .menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+    .menu-toggle span{display:block;width:20px;height:2px;background:var(--espresso);margin:4px 0;border-radius:2px;}
+
+    /* DIVIDER */
+    .divider{border:none;height:1px;background:linear-gradient(90deg,transparent,var(--latte),transparent);margin:8px 0;}
+
+    /* SHARED CARD */
+    .card{background:rgba(255,249,240,0.82);border:1px solid rgba(232,213,183,0.45);border-radius:14px;padding:16px;}
+    .card:hover{border-color:var(--caramel);transform:translateY(-1px);transition:all .25s;}
+    .sec-label{font-family:'Lora',serif;font-size:0.65rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--caramel);margin-bottom:8px;}
+
+    /* ═══ TOP: 3 COLUMNS ═══ */
+    .top-grid{display:grid;grid-template-columns:280px 1fr 1fr;gap:14px;padding:24px 0 16px;}
+
+    /* COL 1 — Identity */
+    .col1{display:flex;flex-direction:column;gap:10px;}
+    .identity-card{background:rgba(255,249,240,0.82);border:1px solid rgba(232,213,183,0.45);border-radius:14px;padding:20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;}
+    .hero-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--latte);box-shadow:0 0 0 5px rgba(232,213,183,0.25),0 8px 20px var(--soft-shadow);}
+    .hero-name{font-family:'Lora',serif;font-size:1.3rem;font-weight:700;color:var(--espresso);letter-spacing:-0.02em;line-height:1.1;}
+    .hero-tagline{font-size:0.74rem;color:var(--caramel);font-weight:600;line-height:1.5;}
+    .hero-certs{font-size:0.68rem;color:var(--warm-gray);line-height:1.65;}
+    .social-links{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;margin-top:2px;}
+    .social-links a{display:inline-flex;align-items:center;gap:4px;text-decoration:none;font-size:0.7rem;font-weight:500;color:var(--espresso);background:rgba(255,249,240,0.9);border:1px solid var(--latte);padding:4px 10px;border-radius:20px;transition:all .2s;}
+    .social-links a:hover{background:var(--latte);border-color:var(--caramel);}
+    .about-card{background:rgba(255,249,240,0.82);border:1px solid rgba(232,213,183,0.45);border-radius:14px;padding:14px;}
+    .about-card p{font-size:0.76rem;color:var(--warm-gray);line-height:1.7;margin-bottom:6px;}
+    .about-card p:last-child{margin-bottom:0;}
+    .identity-quote{font-family:'Lora',serif;font-style:italic;font-size:0.76rem;color:var(--cinnamon);background:rgba(232,213,183,0.2);border-radius:10px;padding:10px 12px;text-align:center;}
+    .spiritual-dark{background:linear-gradient(160deg,#1a0f08,#2d1a0e);border:1px solid rgba(232,168,73,0.2);border-radius:14px;padding:16px;text-align:center;position:relative;overflow:hidden;}
+    .spiritual-dark::before{content:'';position:absolute;top:-30px;right:-30px;width:100px;height:100px;background:radial-gradient(circle,rgba(232,168,73,0.1),transparent 65%);border-radius:50%;}
+    .spiritual-dark .s-emoji{font-size:1.1rem;letter-spacing:5px;margin-bottom:6px;position:relative;z-index:1;}
+    .spiritual-dark .s-label{font-family:'Lora',serif;font-size:0.62rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--honey);margin-bottom:6px;position:relative;z-index:1;}
+    .spiritual-dark p{font-size:0.72rem;color:rgba(253,246,236,0.75);line-height:1.7;position:relative;z-index:1;}
+
+    /* COL 2 — Skills */
+    .col2{display:flex;flex-direction:column;gap:8px;}
+    .highlight-item{background:rgba(255,249,240,0.82);border:1px solid rgba(232,213,183,0.4);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:10px;transition:all .2s;}
+    .highlight-item:hover{background:var(--latte);border-color:var(--caramel);}
+    .highlight-icon{font-size:1.1rem;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--cream),var(--latte));border-radius:9px;flex-shrink:0;}
+    .highlight-item h4{font-family:'Lora',serif;font-size:0.8rem;font-weight:600;color:var(--espresso);margin-bottom:1px;}
+    .highlight-item span{font-size:0.7rem;color:var(--warm-gray);}
+    .skills-quote{background:rgba(255,249,240,0.82);border:1px solid rgba(168,181,160,0.3);border-radius:12px;padding:14px;text-align:center;position:relative;}
+    .skills-quote::before{content:'\201C';font-family:'Lora',serif;font-size:3rem;color:var(--sage);opacity:0.2;position:absolute;top:-2px;left:10px;line-height:1;}
+    .skills-quote p{font-family:'Lora',serif;font-style:italic;font-size:0.8rem;color:var(--cinnamon);}
+
+    /* COL 3 — Projects */
+    .col3{display:flex;flex-direction:column;gap:8px;}
+    .project-card{background:rgba(255,249,240,0.82);border:1px solid rgba(232,213,183,0.4);border-radius:12px;padding:11px 14px;transition:all .2s;text-decoration:none;display:flex;align-items:flex-start;gap:10px;}
+    .project-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px var(--soft-shadow);border-color:var(--caramel);}
+    .project-card .picon{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+    .project-card h4{font-family:'Lora',serif;font-size:0.8rem;font-weight:600;color:var(--espresso);margin-bottom:2px;}
+    .project-card p{font-size:0.7rem;color:var(--warm-gray);line-height:1.5;}
+
+    /* ═══ MIDDLE: RESILIENCE full width ═══ */
+    .resilience-full{background:linear-gradient(160deg,#1a0f08,#2d1a0e,#1a0f08);border-radius:20px;padding:32px 28px;position:relative;overflow:hidden;margin:8px 0;}
+    .resilience-full::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(232,168,73,0.1),transparent 65%);border-radius:50%;}
+    .resilience-full::after{content:'';position:absolute;bottom:-60px;left:-60px;width:220px;height:220px;background:radial-gradient(circle,rgba(201,123,132,0.08),transparent 65%);border-radius:50%;}
+    .res-label{font-size:0.65rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--honey);margin-bottom:6px;position:relative;z-index:1;}
+    .res-title{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#fdf6ec;margin-bottom:6px;line-height:1.2;position:relative;z-index:1;}
+    .res-intro{font-size:0.76rem;color:rgba(253,246,236,0.6);margin-bottom:20px;position:relative;z-index:1;}
+    .res-blocks{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px;position:relative;z-index:1;}
+    .res-block{background:rgba(253,246,236,0.06);border:1px solid rgba(232,168,73,0.15);border-radius:10px;padding:14px;transition:all .25s;}
+    .res-block:hover{background:rgba(253,246,236,0.09);border-color:rgba(232,168,73,0.3);}
+    .res-block-icon{font-size:1.2rem;margin-bottom:6px;display:block;}
+    .res-block h4{font-family:'Lora',serif;font-size:0.76rem;font-weight:600;color:var(--honey);margin-bottom:4px;}
+    .res-block p{font-size:0.7rem;color:rgba(253,246,236,0.65);line-height:1.65;}
+    .res-bottom{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;position:relative;z-index:1;}
+    .res-quote{background:rgba(232,168,73,0.08);border:1px solid rgba(232,168,73,0.2);border-radius:10px;padding:14px 18px;}
+    .res-quote p{font-family:'Lora',serif;font-style:italic;font-size:0.82rem;color:var(--honey);line-height:1.65;}
+    .res-pills{display:flex;flex-wrap:wrap;gap:5px;}
+    .res-pill{font-size:0.66rem;padding:3px 9px;border-radius:10px;border:1px solid rgba(232,168,73,0.2);color:rgba(253,246,236,0.6);background:rgba(232,168,73,0.05);}
+    .res-pill.hi{border-color:rgba(232,168,73,0.4);color:var(--honey);background:rgba(232,168,73,0.1);}
+    .res-cta{background:rgba(201,123,132,0.1);border:1px solid rgba(201,123,132,0.2);border-radius:10px;padding:14px;display:flex;gap:10px;margin-top:14px;position:relative;z-index:1;}
+    .res-cta-icon{font-size:1.3rem;flex-shrink:0;}
+    .res-cta h4{font-family:'Lora',serif;font-size:0.78rem;color:var(--rose);margin-bottom:3px;}
+    .res-cta p{font-size:0.7rem;color:rgba(253,246,236,0.6);line-height:1.65;}
+
+    /* ═══ BOTTOM: 2 COLUMNS ═══ */
+    .bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:8px 0 32px;}
+    .uplift-card{background:rgba(255,249,240,0.82);border:1px solid rgba(232,213,183,0.45);border-radius:16px;padding:22px;height:100%;}
+    .uplift-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+    .uplift-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--rose),var(--caramel));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+    .uplift-header h3{font-family:'Lora',serif;font-size:0.95rem;font-weight:600;color:var(--espresso);}
+    .uplift-header h3 span{color:var(--rose);}
+    .uplift-card p{font-size:0.78rem;color:var(--warm-gray);line-height:1.7;margin-bottom:10px;}
+    .uplift-quote{background:rgba(255,255,255,0.6);border-left:3px solid var(--rose);border-radius:0 10px 10px 0;padding:10px 14px;margin-top:10px;}
+    .uplift-quote p{font-family:'Lora',serif;font-style:italic;font-size:0.78rem;color:var(--rose);margin:0;}
+    .connect-card{background:linear-gradient(135deg,rgba(255,249,240,0.9),rgba(168,181,160,0.15));border:1px solid var(--sage-light);border-radius:16px;padding:28px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;}
+    .connect-card h3{font-family:'Lora',serif;font-size:1.1rem;color:var(--espresso);}
+    .connect-card p{font-size:0.78rem;color:var(--warm-gray);line-height:1.75;max-width:380px;}
+    .btn-cozy{display:inline-flex;align-items:center;gap:8px;padding:11px 28px;background:linear-gradient(135deg,var(--caramel),var(--cinnamon));color:var(--warm);font-family:'Nunito',sans-serif;font-weight:600;font-size:0.85rem;text-decoration:none;border-radius:40px;transition:all .3s;box-shadow:0 4px 14px rgba(160,82,45,0.25);}
+    .btn-cozy:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(160,82,45,0.35);}
+
+    /* FOOTER */
+    footer{padding:24px 0;text-align:center;border-top:1px solid rgba(232,213,183,0.4);}
+    footer p{font-size:0.75rem;color:var(--warm-gray);}
+    footer a{color:var(--caramel);text-decoration:none;}
+    footer .heart{color:var(--rose);}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+
+    /* RESPONSIVE */
+    @media(max-width:960px){
+      .top-grid{grid-template-columns:1fr 1fr;} .col3{display:none;}
+      .res-blocks{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:640px){
+      .top-grid{grid-template-columns:1fr;}
+      .bottom-grid{grid-template-columns:1fr;}
+      .res-blocks{grid-template-columns:1fr;}
+      .res-bottom{grid-template-columns:1fr;}
+      .menu-toggle{display:block;}
+      .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(253,246,236,0.97);backdrop-filter:blur(20px);flex-direction:column;padding:16px 24px;gap:12px;border-bottom:1px solid var(--latte);}
+      .nav-links.open{display:flex;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-fixed"></div>
+<div class="fireflies">
+  <div class="firefly"></div><div class="firefly"></div>
+  <div class="firefly"></div><div class="firefly"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="#" class="nav-logo">Kirti Kaushal<span>.</span></a>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#resilience">Resilience</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- ═══════════ TOP 3 COLUMNS ═══════════ -->
+  <div class="top-grid">
+
+    <!-- COL 1: Identity + About + Quote + Spiritual -->
+    <div class="col1" id="about">
+
+      <div class="identity-card reveal">
+        <img src="https://avatars.githubusercontent.com/u/119587?s=400&u=dc7ab57f514e2fbb6afa2cd9409fa76d24c3a8d2&v=4" alt="Kirti Kaushal" class="hero-avatar">
+        <div class="hero-name">Kirti Kaushal</div>
+        <div class="hero-tagline">Senior Full Stack . AI/ML Engineer <br/>15 Years · Building in Public</div>
+        <div class="hero-certs">PGP-AIML · Azure Fundamentals · SAFe® 6 · CSM® · CS50 · CFA Investment Foundations®</div>
+        <div class="social-links">
+          <a href="https://github.com/kirti" target="_blank">☕ GitHub</a>
+          <a href="https://www.linkedin.com/in/kirti3/" target="_blank">🤝 LinkedIn</a>
+          <a href="https://medium.com/@kirtikau" target="_blank">✍️ Medium</a>
+          <a href="https://kirti.github.io/zero-code-apps/" target="_blank">⚡ Projects</a>
+          <a href="https://www.npmjs.com/package/skillforge-ai" target="_blank">📦 npm</a>
+        </div>
+      </div>
+
+      <div class="about-card reveal">
+        <div class="sec-label">About Me</div>
+        <div class="identity-quote reveal">"Kind is Cool — Share Your Knowledge"</div>
+        <p>With over <strong>15 years of experience</strong> in software development, I have worked as a Technical Architect, Technical Lead, Software Developer, and Team Lead across multiple technology domains. I specialize in building scalable web applications that create meaningful user experiences while delivering strong business value.</p>
+        <p>My passion lies in solving complex problems, mentoring teams, and providing technical leadership — especially in AI and Machine Learning — to build smarter, more impactful solutions for the future.</p>
+        <p>I strongly believe in continuous learning, sharing knowledge, and growing together as a community.</p>
+      </div>
+
+    </div><!-- /col1 -->
+
+    <!-- COL 2: Skills -->
+    <div class="col2" id="skills">
+      <div class="sec-label">What I Bring</div>
+
+      <div class="highlight-item reveal">
+        <div class="highlight-icon">🧠</div>
+        <div><h4>AI/ML Engineer</h4><span>RAG · Agentic AI · LLM Integration · Production</span></div>
+      </div>
+      <div class="highlight-item reveal">
+        <div class="highlight-icon">🏗️</div>
+        <div><h4>15+ Years Full Stack</h4><span>React · Node.js · Python . Java · Microservices</span></div>
+      </div>
+      <div class="highlight-item reveal">
+        <div class="highlight-icon">☁️</div>
+        <div><h4>Azure Certified</h4><span>Cloud · CI/CD · DevOps · GitHub Actions</span></div>
+      </div>
+      <div class="highlight-item reveal">
+        <div class="highlight-icon">👥</div>
+        <div><h4>Technical Lead</h4><span>Mentoring · Architecture · Agile · SAFe 6.0</span></div>
+      </div>
+      <div class="highlight-item reveal">
+        <div class="highlight-icon">📦</div>
+        <div><h4>skillforge-ai on npm</h4><span>AI skill files · Claude · GPT · Gemini · published</span></div>
+      </div>
+      <div class="highlight-item reveal">
+        <div class="highlight-icon">🔬</div>
+        <div><h4>Open Source Builder</h4><span>zero-code-apps · banking POC · CI/CD patterns</span></div>
+      </div>
+
+      <div class="skills-quote reveal">
+        <p>Building smarter systems through AI, continuous learning, and genuine collaboration.</p>
+      </div>
+
+      <!-- Mini projects in col 2 -->
+      <div class="sec-label" style="margin-top:4px;">Featured</div>
+      <a href="https://kirti.github.io/zero-code-apps/builder/" target="_blank" class="project-card reveal">
+        <span class="picon">⚡</span>
+        <div><h4>AI App Builder</h4><p>Claude · GPT-4o · Gemini streaming → live fintech apps</p></div>
+      </a>
+      <a href="https://www.npmjs.com/package/skillforge-ai" target="_blank" class="project-card reveal">
+        <span class="picon">📦</span>
+        <div><h4>skillforge-ai</h4><p>npm · reusable AI skill files for any LLM</p></div>
+      </a>
+    </div><!-- /col2 -->
+
+    <!-- COL 3: More Projects -->
+    <div class="col3" id="projects">
+      <div class="sec-label">Latest Builds</div>
+
+      <a href="https://kirti.github.io/zero-code-apps/cozy/" target="_blank" class="project-card reveal">
+        <span class="picon">✦</span>
+        <div><h4>Cozy Image Generator</h4><p>DALL·E 3 + Stable Diffusion · describe your vibe · instant download</p></div>
+      </a>
+      <a href="https://kirti.github.io/zero-code-apps/skillforge/" target="_blank" class="project-card reveal">
+        <span class="picon">🎯</span>
+        <div><h4>skillforge showcase</h4><p>Interactive skill explorer · CLI demo · npm package site</p></div>
+      </a>
+      <a href="https://kirti.github.io/github-actions-node-patterns/" target="_blank" class="project-card reveal">
+        <span class="picon">⚙️</span>
+        <div><h4>CI/CD Patterns</h4><p>8 GitHub Actions workflows · Node.js · security · auto-releases</p></div>
+      </a>
+      <a href="https://kirti.github.io/ai-banking-poc-frontend/" target="_blank" class="project-card reveal">
+        <span class="picon">🏦</span>
+        <div><h4>AI Banking POC</h4><p>GPT-4 · spending prediction · AI financial advice · live demo</p></div>
+      </a>
+      <a href="https://marketplace.visualstudio.com/publishers/kirti3" target="_blank" class="project-card reveal">
+        <span class="picon">🧩</span>
+        <div><h4>VS Code Extension</h4><p>Published · AI-powered code tools for developers</p></div>
+      </a>
+      <a href="https://huggingface.co/spaces/kirti3/superkart-frontend" target="_blank" class="project-card reveal">
+        <span class="picon">🤖</span>
+        <div><h4>AI Model — HuggingFace</h4><p>SuperKart · deployed on Hugging Face Spaces</p></div>
+      </a>
+       <div class="spiritual-dark reveal">
+        <div class="s-emoji">🙏 🪷 ✨</div>
+        <div class="s-label">Spiritual &amp; Inner Journey</div>
+        <p>My journey is deeply connected with <strong style="color:var(--honey);">Shree Radhe Radhe Krishna, Maha Dev</strong>, and the teachings of the <strong style="color:var(--honey);">Art of Living</strong> — inspiring me to live with positivity, balance, gratitude, and compassion. I believe in a higher power that guides and illuminates every step of the journey. 🌟</p>
+      </div>
+    </div><!-- /col3 -->
+    
+
+  </div><!-- /top-grid -->
+
+  <!-- ═══════════ MIDDLE: RESILIENCE FULL WIDTH ═══════════ -->
+  <hr class="divider">
+
+  <div class="resilience-full reveal" id="resilience">
+    <div class="res-label">Strength · Resilience · Growth</div>
+    <div class="res-title">Continuous Learning Through Every Challenge</div>
+    <div class="res-intro">My journey has not always been easy — and that is exactly what makes it worth sharing.</div>
+
+    <div class="res-blocks">
+      <div class="res-block">
+        <span class="res-block-icon">🛫</span>
+        <h4>Immigrant Professional</h4>
+        <p>Navigating career growth on a dependent visa , immigration challenges — proving skills, rebuilding confidence, and adapting to new challenges every year.</p>
+      </div>
+      <div class="res-block">
+        <span class="res-block-icon">🦴</span>
+        <h4>Personal Resilience</h4>
+        <p>A major accident — broken knee with plates and screws. Slow, painful recovery. I kept learning through every single difficult day.</p>
+      </div>
+      <div class="res-block">
+        <span class="res-block-icon">📚</span>
+        <h4>Never Stopped Learning</h4>
+        <p>Technology evolves, industries change — but the willingness to learn, adapt, and grow remains a lifelong asset I invest in every day.</p>
+      </div>
+      <div class="res-block">
+        <span class="res-block-icon">🌱</span>
+        <h4>Every Step Matters</h4>
+        <p>Sometimes life tests us not to stop us, but to prepare us for something greater. Progress may be slow — keep moving forward always.</p>
+      </div>
+    </div>
+
+    <div class="res-bottom">
+      <div class="res-quote">
+        <p>"Hard times do not define us — they reveal our strength and help us discover capabilities we never knew we possessed."</p>
+      </div>
+      <div class="res-pills">
+        <span class="res-pill hi">Resilience</span>
+        <span class="res-pill hi">Perseverance</span>
+        <span class="res-pill hi">Lifelong Learning</span>
+        <span class="res-pill">Immigrant in Tech</span>
+        <span class="res-pill">Dependent Visa</span>
+        <span class="res-pill">Recovery</span>
+        <span class="res-pill">Gratitude</span>
+        <span class="res-pill">Keep Building</span>
+      </div>
+    </div>
+
+    <div class="res-cta">
+      <div class="res-cta-icon">🤝</div>
+      <div>
+        <h4>To Anyone Facing Setbacks</h4>
+        <p>Keep moving forward. Every small step matters. Knowledge, persistence, and consistency eventually create opportunities. We rise not only through our own success, but also by supporting and encouraging those around us.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ BOTTOM: 2 COLUMNS ═══════════ -->
+  <hr class="divider">
+
+  <div class="bottom-grid">
+
+    <!-- LEFT: Supporting Women -->
+    <div class="uplift-card reveal" id="uplift">
+      <div class="uplift-header">
+        <div class="uplift-icon">💜</div>
+        <h3>Supporting Women to <span>Rise</span></h3>
+      </div>
+      <p>One of the causes closest to my heart is supporting and uplifting women. Many women silently carry responsibilities, emotional struggles, self-doubt, and pressure while continuing to support everyone around them.</p>
+      <p>Through mentorship, motivation, and knowledge sharing, I help women grow with confidence, become financially and emotionally stronger, and realise their true potential. I want to create a safe and positive environment where people feel supported, valued, and inspired to move forward in life and career.</p>
+      <div class="uplift-quote">
+        <p>"When women rise with confidence and support, entire communities become stronger."</p>
+      </div>
+    </div>
+
+    <!-- RIGHT: Connect -->
+    <div class="connect-card reveal" id="connect">
+      <h3>🌿 Free Coaching &amp; Mentorship</h3>
+      <p>I coach and mentor people free of cost — helping them learn, grow, and achieve their goals through kindness, technical guidance, and community support. Whether you're navigating a visa challenge, a career transition, health setbacks, or just need someone to believe in you — I'm here.</p>
+      <a href="mailto:kirtikau@gmail.com" class="btn-cozy">✉️ Say Hello</a>
+    </div>
+
+  </div><!-- /bottom-grid -->
+
+</div><!-- /container -->
+
+<footer>
+  <div class="container">
+    <p>© 2026 Kirti Kaushal · Made with <span class="heart">♥</span> · <a href="https://kirti.github.io/zero-code-apps/">zero-code-apps</a> · <a href="https://www.npmjs.com/package/skillforge-ai">skillforge-ai</a></p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
