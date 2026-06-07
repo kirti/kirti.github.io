@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Kirti Kaushal | AI/ML Engineering · React · GitHub Actions</title>
+  <meta name="description" content="Weekly articles on AI/ML engineering, React, LLM patterns, GitHub Actions, npm packages, and building in public. By Kirti Kaushal — Senior AI/ML Engineer.">
+  <meta name="keywords" content="AI ML engineering, React tutorials, LLM patterns, GitHub Actions, npm packages, fraud detection, XGBoost, SHAP, GPT-4, Node.js, skillforge-ai">
+  <meta name="author" content="Kirti Kaushal">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kirti.github.io/blog/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Blog — Kirti Kaushal | AI/ML Engineering">
+  <meta property="og:description" content="Weekly articles on AI/ML engineering, React, LLM patterns, and building in public.">
+  <meta property="og:url" content="https://kirti.github.io/blog/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/119587?s=400">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Blog — Kirti Kaushal">
+  <meta name="twitter:description" content="Weekly AI/ML engineering articles, React tutorials, LLM patterns.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#FDF6EC;--latte:#E8D5B7;--caramel:#C4956A;--cinnamon:#A0522D;--espresso:#3E2723;--honey:#E8A849;--warm-gray:#8B7D6B;--rose:#C97B84;--soft-shadow:rgba(62,39,35,0.08);}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--espresso);line-height:1.8;}
+    .container{max-width:960px;margin:0 auto;padding:0 24px;}
+
+    nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);background:rgba(253,246,236,0.92);border-bottom:1px solid var(--latte);padding:10px 0;}
+    nav .inner{display:flex;align-items:center;justify-content:space-between;}
+    .nav-logo{font-family:'Lora',serif;font-size:1rem;font-weight:600;color:var(--cinnamon);text-decoration:none;}
+    .nav-links{display:flex;gap:20px;list-style:none;}
+    .nav-links a{text-decoration:none;color:var(--warm-gray);font-size:0.82rem;font-weight:500;transition:color .2s;}
+    .nav-links a:hover{color:var(--cinnamon);}
+
+    .blog-hero{padding:48px 0 32px;border-bottom:1px solid var(--latte);}
+    .blog-hero h1{font-family:'Lora',serif;font-size:2.2rem;font-weight:700;color:var(--espresso);margin-bottom:8px;}
+    .blog-hero p{font-size:0.95rem;color:var(--warm-gray);max-width:600px;line-height:1.7;}
+    .topic-filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+    .filter-btn{font-size:0.75rem;font-weight:600;padding:5px 14px;border-radius:20px;border:1px solid var(--latte);background:rgba(255,249,240,0.8);color:var(--warm-gray);cursor:pointer;transition:all .2s;text-decoration:none;}
+    .filter-btn:hover,.filter-btn.active{background:var(--caramel);color:white;border-color:var(--caramel);}
+
+    .articles-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:40px 0;}
+    .article-card{background:rgba(255,249,240,0.9);border:1px solid rgba(232,213,183,0.5);border-radius:16px;padding:24px;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:all .25s;}
+    .article-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px var(--soft-shadow);border-color:var(--caramel);}
+    .article-tag{display:inline-flex;align-items:center;gap:4px;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:10px;width:fit-content;}
+    .tag-ai{background:rgba(0,180,120,0.1);color:#0a6644;}
+    .tag-react{background:rgba(97,218,251,0.15);color:#0a5fa6;}
+    .tag-ci{background:rgba(88,166,255,0.1);color:#1a4a8a;}
+    .tag-ml{background:rgba(232,168,73,0.12);color:#7a4200;}
+    .tag-npm{background:rgba(201,123,132,0.12);color:#7a2535;}
+    .tag-beginner{background:rgba(168,181,160,0.2);color:#3a5a30;}
+    .article-title{font-family:'Lora',serif;font-size:1.05rem;font-weight:600;color:var(--espresso);line-height:1.4;}
+    .article-desc{font-size:0.8rem;color:var(--warm-gray);line-height:1.7;flex:1;}
+    .article-meta{display:flex;align-items:center;justify-content:space-between;font-size:0.7rem;color:var(--warm-gray);padding-top:8px;border-top:1px solid rgba(232,213,183,0.4);}
+    .read-time{display:flex;align-items:center;gap:4px;}
+    .article-arrow{color:var(--caramel);font-weight:600;}
+    .featured-badge{font-size:0.6rem;background:var(--honey);color:var(--espresso);padding:2px 7px;border-radius:8px;font-weight:700;}
+
+    .section-divider{border:none;height:1px;background:linear-gradient(90deg,transparent,var(--latte),transparent);margin:8px 0;}
+
+    .teach-cta{background:linear-gradient(135deg,rgba(232,168,73,0.08),rgba(201,123,132,0.08));border:1px solid rgba(232,213,183,0.5);border-radius:20px;padding:40px;text-align:center;margin:16px 0 40px;}
+    .teach-cta h3{font-family:'Lora',serif;font-size:1.4rem;color:var(--espresso);margin-bottom:10px;}
+    .teach-cta p{font-size:0.88rem;color:var(--warm-gray);max-width:520px;margin:0 auto 24px;line-height:1.75;}
+    .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--caramel),var(--cinnamon));color:#fff9f0;font-weight:700;font-size:0.88rem;text-decoration:none;border-radius:30px;transition:all .3s;box-shadow:0 4px 16px rgba(160,82,45,0.25);}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(160,82,45,0.35);}
+
+    footer{padding:28px 0;border-top:1px solid var(--latte);text-align:center;font-size:0.78rem;color:var(--warm-gray);}
+    footer a{color:var(--caramel);text-decoration:none;}
+
+    @media(max-width:680px){.articles-grid{grid-template-columns:1fr;}.blog-hero h1{font-size:1.6rem;}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container inner">
+    <a href="/" class="nav-logo">kirti kaushal.</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#connect">Coaching</a></li>
+      <li><a href="https://medium.com/@kirtikau" target="_blank">Medium</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="blog-hero">
+    <h1>Weekly AI & Engineering Articles</h1>
+    <p>Real patterns, real code, real lessons — from 15 years of building production systems and exploring AI/ML. New article every week.</p>
+    <div class="topic-filters">
+      <a href="#all" class="filter-btn active">All Topics</a>
+      <a href="#ai" class="filter-btn">🤖 AI / LLM</a>
+      <a href="#react" class="filter-btn">⚛️ React</a>
+      <a href="#ml" class="filter-btn">🧠 ML Engineering</a>
+      <a href="#ci" class="filter-btn">⚙️ CI/CD</a>
+      <a href="#npm" class="filter-btn">📦 npm</a>
+      <a href="#beginner" class="filter-btn">🌱 Beginner Friendly</a>
+    </div>
+  </div>
+
+  <div class="articles-grid">
+
+    <a href="/blog/llm-patterns-production.html" class="article-card">
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+        <span class="article-tag tag-ai">🤖 AI / LLM</span>
+        <span class="featured-badge">Featured</span>
+      </div>
+      <div class="article-title">6 LLM Engineering Patterns You Can Actually Use in Production</div>
+      <div class="article-desc">Streaming responses, conversation memory, structured JSON output, parallel completions, response caching, and ML+LLM pipelines — with real code from a live banking app.</div>
+      <div class="article-meta">
+        <span class="read-time">📖 8 min read</span>
+        <span class="article-arrow">Read →</span>
+      </div>
+    </a>
+
+    <a href="/blog/github-actions-node.html" class="article-card">
+      <span class="article-tag tag-ci">⚙️ CI/CD</span>
+      <div class="article-title">8 GitHub Actions Patterns Every Node.js Developer Should Know</div>
+      <div class="article-desc">From basic CI to matrix testing, PR automation, scheduled security audits, and release automation. Real workflows I built and the mistakes I made.</div>
+      <div class="article-meta">
+        <span class="read-time">📖 12 min read</span>
+        <span class="article-arrow">Read →</span>
+      </div>
+    </a>
+
+    <a href="/blog/fraud-detection-ml.html" class="article-card">
+      <span class="article-tag tag-ml">🧠 ML Engineering</span>
+      <div class="article-title">I Trained a Fraud Detector on 284K Transactions — Here Is What I Learned</div>
+      <div class="article-desc">XGBoost + Isolation Forest ensemble, SMOTE for 0.17% fraud rate, SHAP explainability, and GPT-4o-mini narrating predictions in plain English.</div>
+      <div class="article-meta">
+        <span class="read-time">📖 10 min read</span>
+        <span class="article-arrow">Read →</span>
+      </div>
+    </a>
+
+    <a href="/blog/skillforge-ai-npm.html" class="article-card">
+      <span class="article-tag tag-npm">📦 npm</span>
+      <div class="article-title">How I Published an AI Skill File Package to npm</div>
+      <div class="article-desc">Reusable prompt files that teach Claude, GPT-4, and Gemini your coding standards. The idea, the build, the 2FA errors, and what finally worked.</div>
+      <div class="article-meta">
+        <span class="read-time">📖 6 min read</span>
+        <span class="article-arrow">Read →</span>
+      </div>
+    </a>
+
+    <a href="/blog/react-ai-beginners.html" class="article-card">
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <span class="article-tag tag-react">⚛️ React</span>
+        <span class="article-tag tag-beginner">🌱 Beginner</span>
+      </div>
+      <div class="article-title">React for Beginners: Build Your First App With AI Assistance</div>
+      <div class="article-desc">A gentle introduction to React — components, props, state, and hooks — with AI tools helping you learn faster. Perfect for coding beginners and career switchers.</div>
+      <div class="article-meta">
+        <span class="read-time">📖 15 min read</span>
+        <span class="article-arrow">Read →</span>
+      </div>
+    </a>
+
+    <a href="/blog/shap-explainability.html" class="article-card">
+      <span class="article-tag tag-ml">🧠 ML Engineering</span>
+      <div class="article-title">Why I Used SHAP Instead of Just Showing a Confidence Score</div>
+      <div class="article-desc">Explainable AI is not just a nice-to-have — it is what separates a toy model from a trustworthy one. How SHAP values work and why banks actually use them.</div>
+      <div class="article-meta">
+        <span class="read-time">📖 7 min read</span>
+        <span class="article-arrow">Read →</span>
+      </div>
+    </a>
+
+    <a href="/blog/ai-skill-files.html" class="article-card">
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <span class="article-tag tag-ai">🤖 AI Tools</span>
+        <span class="article-tag tag-beginner">🌱 Beginner</span>
+      </div>
+      <div class="article-title">Stop Arguing With AI About Code Quality — Write a Skill File Instead</div>
+      <div class="article-desc">One SKILL.md file changed how my AI assistant generates React code permanently. No more inline objects, no more missing ARIA labels.</div>
+      <div class="article-meta">
+        <span class="read-time">📖 5 min read</span>
+        <span class="article-arrow">Read →</span>
+      </div>
+    </a>
+
+    <a href="/blog/github-actions-loops.html" class="article-card">
+      <span class="article-tag tag-ci">⚙️ CI/CD</span>
+      <div class="article-title">The GitHub Actions Mistake That Creates Infinite Loops</div>
+      <div class="article-desc">The [skip ci] convention, why release automation breaks without it, and three other gotchas I hit building production CI/CD pipelines.</div>
+      <div class="article-meta">
+        <span class="read-time">📖 4 min read</span>
+        <span class="article-arrow">Read →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="teach-cta">
+    <div style="font-size:2rem;margin-bottom:12px;">👩‍🏫</div>
+    <h3>Learn AI/ML · React · Node.js<br>with a Senior Engineer</h3>
+    <p>I teach beginners, intermediates, and advanced developers — from your first React component to deploying a real ML model. Small POC projects, real code, no fluff.</p>
+    <a href="mailto:kirtikau@gmail.com?subject=Coaching Session Request" class="cta-btn">📅 Book a Free Session</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Kirti Kaushal · <a href="/">Home</a> · <a href="https://medium.com/@kirtikau" target="_blank">Medium</a> · <a href="https://www.linkedin.com/in/kirti3/" target="_blank">LinkedIn</a> · <a href="https://github.com/kirti" target="_blank">GitHub</a></p>
+</footer>
+
+</body>
+</html>

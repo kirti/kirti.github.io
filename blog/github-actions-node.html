@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8 GitHub Actions Patterns Every Node.js Developer Should Know | Kirti Kaushal</title>
+  <meta name="description" content="Real workflows I built and broke — from basic CI to matrix testing, PR automation, security audits, and release automation with semantic versioning.">
+  <meta name="author" content="Kirti Kaushal">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kirti.github.io/blog/github-actions-node.html">
+  <meta property="og:title" content="8 GitHub Actions Patterns Every Node.js Developer Should Know">
+  <meta property="og:description" content="Real workflows I built and broke — from basic CI to matrix testing, PR automation, security audits, and release automation with semantic versioning.">
+  <meta property="og:url" content="https://kirti.github.io/blog/github-actions-node.html">
+  <meta property="og:type" content="article">
+  <meta property="article:author" content="Kirti Kaushal">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#FDF6EC;--latte:#E8D5B7;--caramel:#C4956A;--cinnamon:#A0522D;--espresso:#3E2723;--honey:#E8A849;--warm-gray:#8B7D6B;--rose:#C97B84;--soft-shadow:rgba(62,39,35,0.08);}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--espresso);line-height:1.85;}
+    .container{max-width:720px;margin:0 auto;padding:0 24px;}
+    nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);background:rgba(253,246,236,0.92);border-bottom:1px solid var(--latte);padding:10px 0;}
+    nav .inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;}
+    .nav-logo{font-family:'Lora',serif;font-size:1rem;font-weight:600;color:var(--cinnamon);text-decoration:none;}
+    .nav-links{display:flex;gap:20px;list-style:none;}
+    .nav-links a{text-decoration:none;color:var(--warm-gray);font-size:0.82rem;font-weight:500;transition:color .2s;}
+    .nav-links a:hover{color:var(--cinnamon);}
+    .article-header{padding:48px 0 32px;}
+    .article-tag{display:inline-flex;align-items:center;gap:4px;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:14px;}
+    .tag-ci{background:rgba(88,166,255,0.1);color:#1a4a8a;}
+    .tag-ml{background:rgba(232,168,73,0.12);color:#7a4200;}
+    .tag-npm{background:rgba(201,123,132,0.12);color:#7a2535;}
+    .tag-ai{background:rgba(0,180,120,0.1);color:#0a6644;}
+    .tag-beginner{background:rgba(168,181,160,0.2);color:#3a5a30;}
+    .tag-react{background:rgba(97,218,251,0.15);color:#0a5fa6;}
+    .article-header h1{font-family:'Lora',serif;font-size:2rem;font-weight:700;color:var(--espresso);line-height:1.3;margin-bottom:14px;}
+    .article-byline{font-size:0.8rem;color:var(--warm-gray);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+    .byline-divider{color:var(--latte);}
+    .article-body{padding:32px 0 48px;}
+    .article-body p{margin-bottom:20px;font-size:0.95rem;color:#4a3728;}
+    .article-body h2{font-family:'Lora',serif;font-size:1.4rem;font-weight:600;color:var(--espresso);margin:36px 0 14px;padding-top:4px;border-top:2px solid var(--latte);}
+    .article-body h3{font-family:'Lora',serif;font-size:1.1rem;font-weight:600;color:var(--cinnamon);margin:24px 0 10px;}
+    .article-body ul,ol{margin:0 0 20px 24px;}
+    .article-body li{font-size:0.92rem;color:#4a3728;margin-bottom:6px;}
+    .article-body strong{color:var(--espresso);}
+    pre{background:#1e1208;border-radius:12px;padding:20px;margin:20px 0;overflow-x:auto;border:1px solid rgba(232,213,183,0.2);}
+    code{font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:#e8c99a;line-height:1.7;}
+    p code,li code{background:rgba(232,213,183,0.25);color:var(--cinnamon);padding:1px 5px;border-radius:4px;font-size:0.82rem;}
+    .callout{background:rgba(232,168,73,0.08);border-left:3px solid var(--honey);border-radius:0 10px 10px 0;padding:14px 18px;margin:20px 0;font-size:0.88rem;color:var(--warm-gray);}
+    .callout strong{color:var(--espresso);}
+    .book-session{background:linear-gradient(135deg,rgba(232,168,73,0.08),rgba(201,123,132,0.08));border:1px solid rgba(232,213,183,0.5);border-radius:16px;padding:28px;text-align:center;margin:32px 0;}
+    .book-session h3{font-family:'Lora',serif;font-size:1.1rem;color:var(--espresso);margin-bottom:8px;}
+    .book-session p{font-size:0.82rem;color:var(--warm-gray);margin-bottom:16px;line-height:1.7;}
+    .btn-book{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:linear-gradient(135deg,var(--caramel),var(--cinnamon));color:#fff9f0;font-weight:700;font-size:0.85rem;text-decoration:none;border-radius:30px;transition:all .3s;box-shadow:0 4px 14px rgba(160,82,45,0.25);}
+    .btn-book:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(160,82,45,0.35);}
+    .article-nav{display:flex;justify-content:space-between;padding:24px 0;border-top:1px solid var(--latte);margin-top:16px;gap:12px;}
+    .nav-link{font-size:0.82rem;color:var(--caramel);text-decoration:none;font-weight:600;}
+    .nav-link:hover{color:var(--cinnamon);}
+    footer{padding:28px 0;border-top:1px solid var(--latte);text-align:center;font-size:0.78rem;color:var(--warm-gray);}
+    footer a{color:var(--caramel);text-decoration:none;}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"8 GitHub Actions Patterns Every Node.js Developer Should Know","author":{"@type":"Person","name":"Kirti Kaushal","url":"https://kirti.github.io"},"datePublished":"2026-06-01","description":"Real workflows I built and broke — from basic CI to matrix testing, PR automation, security audits, and release automation with semantic versioning."}
+  </script>
+</head>
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="nav-logo">kirti kaushal.</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#connect">Coaching</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="article-header">
+    <div class="article-tag tag-ci">⚙️ CI/CD</div>
+    <h1>8 GitHub Actions Patterns Every Node.js Developer Should Know</h1>
+    <div class="article-byline">
+      <span>By Kirti Kaushal</span>
+      <span class="byline-divider">·</span>
+      <span>June 2026</span>
+      <span class="byline-divider">·</span>
+      <span>12 min read</span>
+      <span class="byline-divider">·</span>
+      <a href="https://kirti.github.io/github-actions-node-patterns/" target="_blank" style="color:var(--caramel);">Live demo →</a>
+    </div>
+  </div>
+  <div class="article-body">
+    
+    <p>I started this project because I wanted to actually understand GitHub Actions — not just copy workflows from Stack Overflow. So I built 8 patterns from scratch, one per day, and documented every mistake I made along the way.</p>
+
+    <h2>Pattern 1 — Basic CI</h2>
+    <p>The foundation. Runs on every push, installs dependencies, runs tests, builds the project. The key insight: use <code>npm ci</code> not <code>npm install</code>. It uses your lockfile exactly and fails if lockfile is out of sync.</p>
+    <p>Also: <code>--passWithNoTests --watchAll=false</code> are essential Jest flags in CI. Without <code>--watchAll=false</code>, Jest watches for changes and the process never exits.</p>
+
+    <h2>Pattern 2 — Dependency Caching</h2>
+    <p>One line change: <code>cache: 'npm'</code> in the setup-node step. GitHub hashes your <code>package-lock.json</code> and restores cached node_modules if nothing changed. 45 seconds → 12 seconds on cache hit.</p>
+    <pre><code>- uses: actions/setup-node@v4
+  with:
+    node-version: '22'
+    cache: 'npm'  # ← this one line</code></pre>
+
+    <h2>Pattern 3 — Matrix Testing</h2>
+    <p>Test on Node 18, 20, and 22 simultaneously. Three parallel jobs, one workflow definition.</p>
+    <pre><code>strategy:
+  matrix:
+    node-version: [18, 20, 22]
+  fail-fast: false  # see all results even if one fails</code></pre>
+
+    <h2>Pattern 4 — GitHub Pages Auto-Deploy</h2>
+    <p>The <code>CI: false</code> flag stops Create React App from treating warnings as errors. The <code>concurrency</code> block prevents out-of-order deployments if you push twice quickly. Permissions <code>pages: write</code> and <code>id-token: write</code> are mandatory — without them you get a confusing 403.</p>
+
+    <h2>Pattern 5 — PR Automation</h2>
+    <p>Auto-labels PRs by file type (workflows, source-code, tests, documentation) and size (XS to XL). Posts a statistics comment with additions, deletions, and files changed. Detects and updates existing comments instead of posting duplicates.</p>
+
+    <h2>Pattern 6 — PR Status Comments That Always Post</h2>
+    <p>The key: <code>if: always()</code> on the comment job. Without it, the comment is skipped when tests fail — exactly when you need it most. <code>needs.test.result</code> gives you the outcome of the upstream job.</p>
+
+    <h2>Pattern 7 — Scheduled Security Audits</h2>
+    <p>Runs every Monday at 9 AM via cron. Creates or updates a GitHub issue when critical vulnerabilities are found. Smart issue management — one issue per period, updated weekly, not a new issue every Monday.</p>
+    <pre><code>schedule:
+  - cron: '0 9 * * 1'  # Every Monday</code></pre>
+
+    <h2>Pattern 8 — Release Automation</h2>
+    <p>Push a <code>feat:</code> commit and the workflow bumps the minor version, generates a changelog from commit messages, creates a GitHub release. The <code>[skip ci]</code> in the version bump commit prevents infinite loops. <code>paths-ignore</code> on markdown files also helps.</p>
+
+    <div class="callout"><strong>Full series:</strong> All 8 workflows are live at <a href="https://kirti.github.io/github-actions-node-patterns/" style="color:var(--cinnamon);">kirti.github.io/github-actions-node-patterns</a> with source code you can copy directly.</div>
+
+    <div class="book-session">
+      <h3>🎓 Learn this with me</h3>
+      <p>I teach React, AI/ML engineering, and Node.js from beginner to advanced. Real POC projects, real code. Book a free 30-minute session.</p>
+      <a href="mailto:kirtikau@gmail.com?subject=Coaching Session" class="btn-book">📅 Book Free Session</a>
+    </div>
+    <div class="article-nav">
+      <a href="/blog/llm-patterns-production.html" class="nav-link">← LLM Patterns</a>
+      <a href="/blog/fraud-detection-ml.html" class="nav-link">Fraud Detection →</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2026 Kirti Kaushal · <a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="https://medium.com/@kirtikau" target="_blank">Medium</a> · <a href="https://www.linkedin.com/in/kirti3/" target="_blank">LinkedIn</a></p>
+</footer>
+</body>
+</html>

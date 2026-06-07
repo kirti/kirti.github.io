@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React for Beginners: Build Your First App With AI Assistance | Kirti Kaushal</title>
+  <meta name="description" content="A gentle introduction to React — components, props, state, and hooks — with AI tools helping you learn faster. Perfect for coding beginners.">
+  <meta name="author" content="Kirti Kaushal">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kirti.github.io/blog/react-ai-beginners.html">
+  <meta property="og:title" content="React for Beginners: Build Your First App With AI Assistance">
+  <meta property="og:description" content="A gentle introduction to React — components, props, state, and hooks — with AI tools helping you learn faster. Perfect for coding beginners.">
+  <meta property="og:url" content="https://kirti.github.io/blog/react-ai-beginners.html">
+  <meta property="og:type" content="article">
+  <meta property="article:author" content="Kirti Kaushal">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#FDF6EC;--latte:#E8D5B7;--caramel:#C4956A;--cinnamon:#A0522D;--espresso:#3E2723;--honey:#E8A849;--warm-gray:#8B7D6B;--rose:#C97B84;--soft-shadow:rgba(62,39,35,0.08);}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--espresso);line-height:1.85;}
+    .container{max-width:720px;margin:0 auto;padding:0 24px;}
+    nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);background:rgba(253,246,236,0.92);border-bottom:1px solid var(--latte);padding:10px 0;}
+    nav .inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;}
+    .nav-logo{font-family:'Lora',serif;font-size:1rem;font-weight:600;color:var(--cinnamon);text-decoration:none;}
+    .nav-links{display:flex;gap:20px;list-style:none;}
+    .nav-links a{text-decoration:none;color:var(--warm-gray);font-size:0.82rem;font-weight:500;transition:color .2s;}
+    .nav-links a:hover{color:var(--cinnamon);}
+    .article-header{padding:48px 0 32px;}
+    .article-tag{display:inline-flex;align-items:center;gap:4px;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:14px;}
+    .tag-ci{background:rgba(88,166,255,0.1);color:#1a4a8a;}
+    .tag-ml{background:rgba(232,168,73,0.12);color:#7a4200;}
+    .tag-npm{background:rgba(201,123,132,0.12);color:#7a2535;}
+    .tag-ai{background:rgba(0,180,120,0.1);color:#0a6644;}
+    .tag-beginner{background:rgba(168,181,160,0.2);color:#3a5a30;}
+    .tag-react{background:rgba(97,218,251,0.15);color:#0a5fa6;}
+    .article-header h1{font-family:'Lora',serif;font-size:2rem;font-weight:700;color:var(--espresso);line-height:1.3;margin-bottom:14px;}
+    .article-byline{font-size:0.8rem;color:var(--warm-gray);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+    .byline-divider{color:var(--latte);}
+    .article-body{padding:32px 0 48px;}
+    .article-body p{margin-bottom:20px;font-size:0.95rem;color:#4a3728;}
+    .article-body h2{font-family:'Lora',serif;font-size:1.4rem;font-weight:600;color:var(--espresso);margin:36px 0 14px;padding-top:4px;border-top:2px solid var(--latte);}
+    .article-body h3{font-family:'Lora',serif;font-size:1.1rem;font-weight:600;color:var(--cinnamon);margin:24px 0 10px;}
+    .article-body ul,ol{margin:0 0 20px 24px;}
+    .article-body li{font-size:0.92rem;color:#4a3728;margin-bottom:6px;}
+    .article-body strong{color:var(--espresso);}
+    pre{background:#1e1208;border-radius:12px;padding:20px;margin:20px 0;overflow-x:auto;border:1px solid rgba(232,213,183,0.2);}
+    code{font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:#e8c99a;line-height:1.7;}
+    p code,li code{background:rgba(232,213,183,0.25);color:var(--cinnamon);padding:1px 5px;border-radius:4px;font-size:0.82rem;}
+    .callout{background:rgba(232,168,73,0.08);border-left:3px solid var(--honey);border-radius:0 10px 10px 0;padding:14px 18px;margin:20px 0;font-size:0.88rem;color:var(--warm-gray);}
+    .callout strong{color:var(--espresso);}
+    .book-session{background:linear-gradient(135deg,rgba(232,168,73,0.08),rgba(201,123,132,0.08));border:1px solid rgba(232,213,183,0.5);border-radius:16px;padding:28px;text-align:center;margin:32px 0;}
+    .book-session h3{font-family:'Lora',serif;font-size:1.1rem;color:var(--espresso);margin-bottom:8px;}
+    .book-session p{font-size:0.82rem;color:var(--warm-gray);margin-bottom:16px;line-height:1.7;}
+    .btn-book{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:linear-gradient(135deg,var(--caramel),var(--cinnamon));color:#fff9f0;font-weight:700;font-size:0.85rem;text-decoration:none;border-radius:30px;transition:all .3s;box-shadow:0 4px 14px rgba(160,82,45,0.25);}
+    .btn-book:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(160,82,45,0.35);}
+    .article-nav{display:flex;justify-content:space-between;padding:24px 0;border-top:1px solid var(--latte);margin-top:16px;gap:12px;}
+    .nav-link{font-size:0.82rem;color:var(--caramel);text-decoration:none;font-weight:600;}
+    .nav-link:hover{color:var(--cinnamon);}
+    footer{padding:28px 0;border-top:1px solid var(--latte);text-align:center;font-size:0.78rem;color:var(--warm-gray);}
+    footer a{color:var(--caramel);text-decoration:none;}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"React for Beginners: Build Your First App With AI Assistance","author":{"@type":"Person","name":"Kirti Kaushal","url":"https://kirti.github.io"},"datePublished":"2026-06-01","description":"A gentle introduction to React — components, props, state, and hooks — with AI tools helping you learn faster. Perfect for coding beginners."}
+  </script>
+</head>
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="nav-logo">kirti kaushal.</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#connect">Coaching</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="article-header">
+    <div class="article-tag tag-beginner">🌱 Beginner Friendly</div>
+    <h1>React for Beginners: Build Your First App With AI Assistance</h1>
+    <div class="article-byline">
+      <span>By Kirti Kaushal</span>
+      <span class="byline-divider">·</span>
+      <span>June 2026</span>
+      <span class="byline-divider">·</span>
+      <span>15 min read</span>
+      <span class="byline-divider">·</span>
+      <a href="https://kirti.github.io/zero-code-apps/" target="_blank" style="color:var(--caramel);">Live demo →</a>
+    </div>
+  </div>
+  <div class="article-body">
+    
+    <p>React is one of the most in-demand skills for web developers right now. And with AI tools like Claude and GitHub Copilot, learning it has become significantly faster than it was even two years ago. This article walks you through the core concepts with real examples — and shows you exactly how to use AI to accelerate your learning.</p>
+
+    <h2>What is React?</h2>
+    <p>React is a JavaScript library for building user interfaces. Instead of writing HTML that changes manually, you describe what the UI should look like and React updates it automatically when your data changes.</p>
+    <p>Think of it like this: instead of saying "change this text to the new value", you say "this text always shows <code>userName</code>" — and whenever <code>userName</code> changes, React updates the screen automatically.</p>
+
+    <h2>Your First Component</h2>
+    <p>Everything in React is a component — a reusable piece of UI. Here is the simplest possible one:</p>
+    <pre><code>function Greeting() {
+  return &lt;h1&gt;Hello, World!&lt;/h1&gt;;
+}
+
+export default Greeting;</code></pre>
+    <p>That is it. A function that returns HTML-like syntax (called JSX). You can use this component anywhere: <code>&lt;Greeting /&gt;</code></p>
+
+    <h2>Props — Passing Data In</h2>
+    <p>Props let you customise components. Like function arguments:</p>
+    <pre><code>function Greeting({ name, role }) {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Hello, {name}!&lt;/h1&gt;
+      &lt;p&gt;You are a {role}.&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Usage:
+&lt;Greeting name="Kirti" role="Engineer" /&gt;</code></pre>
+
+    <h2>State — Data That Changes</h2>
+    <p>Props are read-only. State is data that can change and automatically updates the UI:</p>
+    <pre><code>import { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+        Add 1
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+    <p>Every time you click the button, <code>setCount</code> updates the state, React re-renders the component, and the new count appears instantly.</p>
+
+    <h2>How to Use AI to Learn React Faster</h2>
+    <p>Here is exactly how I suggest using Claude or ChatGPT while learning:</p>
+    <ul>
+      <li><strong>Explain what you are trying to build</strong> — "I want a form that adds items to a list"</li>
+      <li><strong>Ask for the simplest version first</strong> — "Show me the most basic way to do this"</li>
+      <li><strong>Ask it to explain the code line by line</strong> — "Explain what each line does"</li>
+      <li><strong>Break it deliberately</strong> — "What happens if I remove the key prop?"</li>
+      <li><strong>Ask for the next level</strong> — "Now show me how to make it save to localStorage"</li>
+    </ul>
+
+    <div class="callout"><strong>Learning tip:</strong> Always type the code yourself — never copy-paste. Typing builds muscle memory and forces your brain to process each character. AI is your tutor, not your typist.</div>
+
+    <h2>Your First Real Project</h2>
+    <p>The best way to learn is to build something you actually want. Here are 3 beginner-friendly projects that teach you all the core React concepts:</p>
+    <ul>
+      <li><strong>Todo app</strong> — add, complete, delete items. Teaches: useState, lists, events</li>
+      <li><strong>Weather app</strong> — fetch weather for a city. Teaches: useEffect, API calls, conditional rendering</li>
+      <li><strong>Expense tracker</strong> — add expenses, see totals. Teaches: forms, calculated state, local storage</li>
+    </ul>
+    <p>Start with the todo app. It sounds boring but it teaches every core React pattern you need. Once you can build it from scratch without looking anything up, you are ready for the next level.</p>
+
+    <div class="book-session">
+      <h3>🎓 Learn this with me</h3>
+      <p>I teach React, AI/ML engineering, and Node.js from beginner to advanced. Real POC projects, real code. Book a free 30-minute session.</p>
+      <a href="mailto:kirtikau@gmail.com?subject=Coaching Session" class="btn-book">📅 Book Free Session</a>
+    </div>
+    <div class="article-nav">
+      <a href="/blog/fraud-detection-ml.html" class="nav-link">← Fraud Detection</a>
+      <a href="/blog/ai-skill-files.html" class="nav-link">AI Skill Files →</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2026 Kirti Kaushal · <a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="https://medium.com/@kirtikau" target="_blank">Medium</a> · <a href="https://www.linkedin.com/in/kirti3/" target="_blank">LinkedIn</a></p>
+</footer>
+</body>
+</html>
