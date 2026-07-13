@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My First Blog: Building in Public | Kirti Kaushal</title>
+  <meta name="description" content="I'm not writing because I have everything figured out. I'm writing because I want to learn, build, and grow in public — and I'd love for you to build alongside me.">
+  <meta name="author" content="Kirti Kaushal">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kirti.github.io/blog/building-in-public.html">
+  <meta property="og:title" content="My First Blog: Building in Public">
+  <meta property="og:description" content="I'm not writing because I have everything figured out. I'm writing because I want to learn, build, and grow in public.">
+  <meta property="og:url" content="https://kirti.github.io/blog/building-in-public.html">
+  <meta property="og:type" content="article">
+  <meta property="article:author" content="Kirti Kaushal">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#FDF6EC;--latte:#E8D5B7;--caramel:#C4956A;--cinnamon:#A0522D;--espresso:#3E2723;--honey:#E8A849;--warm-gray:#8B7D6B;--rose:#C97B84;--soft-shadow:rgba(62,39,35,0.08);}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--espresso);line-height:1.85;}
+    .container{max-width:720px;margin:0 auto;padding:0 24px;}
+    nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);background:rgba(253,246,236,0.92);border-bottom:1px solid var(--latte);padding:10px 0;}
+    nav .inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;}
+    .nav-logo{font-family:'Lora',serif;font-size:1rem;font-weight:600;color:var(--cinnamon);text-decoration:none;}
+    .nav-links{display:flex;gap:20px;list-style:none;}
+    .nav-links a{text-decoration:none;color:var(--warm-gray);font-size:0.82rem;font-weight:500;transition:color .2s;}
+    .nav-links a:hover{color:var(--cinnamon);}
+    .article-header{padding:48px 0 32px;}
+    .article-tag{display:inline-flex;align-items:center;gap:4px;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-bottom:14px;}
+    .tag-journey{background:rgba(160,82,45,0.12);color:#6b3617;}
+    .tag-women{background:rgba(155,89,182,0.12);color:#6a3d8f;}
+    .article-header h1{font-family:'Lora',serif;font-size:2rem;font-weight:700;color:var(--espresso);line-height:1.3;margin-bottom:14px;}
+    .article-byline{font-size:0.8rem;color:var(--warm-gray);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+    .byline-divider{color:var(--latte);}
+    .article-body{padding:32px 0 48px;}
+    .article-body p{margin-bottom:20px;font-size:0.95rem;color:#4a3728;}
+    .article-body h2{font-family:'Lora',serif;font-size:1.4rem;font-weight:600;color:var(--espresso);margin:36px 0 14px;padding-top:4px;border-top:2px solid var(--latte);}
+    .article-body h3{font-family:'Lora',serif;font-size:1.1rem;font-weight:600;color:var(--cinnamon);margin:24px 0 10px;}
+    .article-body strong{color:var(--espresso);}
+    .callout{background:rgba(232,168,73,0.08);border-left:3px solid var(--honey);border-radius:0 10px 10px 0;padding:14px 18px;margin:20px 0;font-size:0.88rem;color:var(--warm-gray);}
+    .callout strong{color:var(--espresso);}
+    .book-session{background:linear-gradient(135deg,rgba(232,168,73,0.08),rgba(201,123,132,0.08));border:1px solid rgba(232,213,183,0.5);border-radius:16px;padding:28px;text-align:center;margin:32px 0;}
+    .book-session h3{font-family:'Lora',serif;font-size:1.1rem;color:var(--espresso);margin-bottom:8px;}
+    .book-session p{font-size:0.82rem;color:var(--warm-gray);margin-bottom:16px;line-height:1.7;}
+    .btn-book{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:linear-gradient(135deg,var(--caramel),var(--cinnamon));color:#fff9f0;font-weight:700;font-size:0.85rem;text-decoration:none;border-radius:30px;transition:all .3s;box-shadow:0 4px 14px rgba(160,82,45,0.25);}
+    .btn-book:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(160,82,45,0.35);}
+    .article-nav{display:flex;justify-content:space-between;padding:24px 0;border-top:1px solid var(--latte);margin-top:16px;gap:12px;}
+    .nav-link{font-size:0.82rem;color:var(--caramel);text-decoration:none;font-weight:600;}
+    .nav-link:hover{color:var(--cinnamon);}
+    footer{padding:28px 0;border-top:1px solid var(--latte);text-align:center;font-size:0.78rem;color:var(--warm-gray);}
+    footer a{color:var(--caramel);text-decoration:none;}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"My First Blog: Building in Public","author":{"@type":"Person","name":"Kirti Kaushal","url":"https://kirti.github.io"},"datePublished":"2026-07-11","description":"I'm not writing because I have everything figured out. I'm writing because I want to learn, build, and grow in public."}
+  </script>
+</head>
+<body>
+<nav>
+  <div class="inner">
+    <a href="/" class="nav-logo">kirti kaushal.</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#connect">Coaching</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="article-header">
+    <div class="article-tag tag-journey">✍️ Building in Public</div>
+    <h1>My First Blog: Building in Public</h1>
+    <div class="article-byline">
+      <span>By Kirti Kaushal</span>
+      <span class="byline-divider">·</span>
+      <span>July 2026</span>
+      <span class="byline-divider">·</span>
+      <span>3 min read</span>
+    </div>
+  </div>
+  <div class="article-body">
+
+    <p>This is my first blog.</p>
+    <p>I'm not writing because I have everything figured out. I'm writing because I want to learn, build, and grow in public.</p>
+ <h2> Reaching Out... and Learning to Keep Going</h2>
+
+<p>When I started this journey, I was full of excitement. I reached out to mentors and experienced professionals, hoping to learn from their experiences, exchange ideas, and receive thoughtful feedback.</p>
+
+<p>Some conversations were insightful and helped shape my thinking. Others were brief, and a few simply took a different direction than I had expected. Every interaction taught me something—whether it was about technology, communication, or the importance of continuing to build regardless of the outcome.</p>
+
+<p>One lesson became clear: seeking guidance is valuable, but progress ultimately depends on consistently doing the work yourself. Mentors can offer perspective, but your growth comes from experimenting, learning from failures, and staying committed to your goals.</p>
+
+<p>Today, I still believe in reaching out, asking questions, and learning from others. At the same time, I've learned not to wait for the perfect conversation or the perfect opportunity. Keep building, keep sharing, and let your work speak for itself.</p>
+
+
+    <h2>What I Learned From the Silence</h2>
+    <p>At first, I questioned myself. Was I asking the wrong questions? Was I not good enough?</p>
+    <p>Over time, I realized something important: every person's journey is different. Not everyone has the time to mentor. Not everyone is comfortable sharing their experience. And sometimes, people simply move in a different direction.</p>
+    <p>So instead of waiting for someone to open a door, I've decided to build my own.</p>
+
+    <h2>Why I'm Building in Public</h2>
+    <p>I don't know who will read these posts. I don't know who will support me. But I hope that somewhere, someone will connect with this journey, share their perspective, challenge my thinking, or simply remind me that I'm not building alone.</p>
+    <p>One lesson I've already learned is that there is rarely one perfect design or one perfect solution. Every problem can be solved in many different ways. The best ideas don't come from protecting knowledge — they come from sharing it, discussing it, improving it, and learning together.</p>
+
+    <div class="callout"><strong>This blog isn't about proving I'm right.</strong> It's about documenting my progress, learning from mistakes, and becoming a little better every day.</div>
+
+    <p>If you're also building something, learning a new skill, or trying to find your place in technology, I'd love to learn alongside you.</p>
+    <p>We're all beginners at something. And today, this is my beginning.</p>
+
+    <div class="book-session">
+      <h3>🌿 Let's build alongside each other</h3>
+      <p>If this resonates, I'd love to hear from you — or if you're navigating your own career journey, I coach and mentor free of cost.</p>
+      <a href="mailto:kirtikau@gmail.com?subject=Building in Public - Say Hello" class="btn-book">✉️ Say Hello</a>
+    </div>
+    <div class="article-nav">
+      <a href="/blog/" class="nav-link">← All Articles</a>
+      <a href="/blog/finding-my-voice.html" class="nav-link">Finding My Voice Again →</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>© 2026 Kirti Kaushal · <a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="https://medium.com/@kirtikau" target="_blank">Medium</a> · <a href="https://www.linkedin.com/in/kirti3/" target="_blank">LinkedIn</a></p>
+</footer>
+</body>
+</html>
